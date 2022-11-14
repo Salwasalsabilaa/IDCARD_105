@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Text-date-image</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
@@ -34,11 +34,14 @@ and open the template in the editor.
         <h1>Id Card</h1>
         <hr><!-- comment -->
         <h2>Input Data</h2>
-        <form action=“/idCard” method=“POST” enctype=“multipart/form-data”>
-           Name     : <input type=“text” name=“Name”><p/>
-           Born     : <input type=“date” name=“Born”><p/>
-           Photo    : <input type=“file” name=“Photo”><p/>
-            <button type="submit">SUBMIT DATA</button>
+        <form action=“/getData” method=“POST” enctype=“multipart/form-data”>
+           Name     : <input type=“text” name=“nama”><p/>
+           Born     : <input type="date" name="tanggal"></p>
+           Photo    : <input type="file" name="image"></p>
+            <input type="submit" name="Send">
         </form>
+        <div class="footer">
+            <p>Azhar Salwa Salsabila (20200140105)</p>
+        </div>
     </body>
 </html>
