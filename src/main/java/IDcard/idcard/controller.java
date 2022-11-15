@@ -11,6 +11,7 @@ import java.util.Date;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,8 +27,8 @@ public class controller {
     @ResponseBody
     @RequestMapping ("/getData")
     public String getData(@RequestParam("nama") String text,
-                          @RequestParam("image") MultipartFile file,
-                          @RequestParam("tanggal")@DateTimeFormat (pattern="yyyy-MM-dd")Date tanggal)
+                          @RequestParam("tanggal")@DateTimeFormat (pattern="yyyy-MM-dd")Date tanggal,
+                          @RequestParam("image") MultipartFile file, Model model)
                           throws IOException{
         
 //            String buffer = text.toLowerCase();
@@ -39,11 +40,19 @@ public class controller {
 //                text = text + "Keren";
 //            }
             //Date date = new Date();
-            SimpleDateFormat tgl = new SimpleDateFormat("EEEE, dd MMMM yyyy");
-            String newtanggal = tgl.format(tanggal);
+            //SimpleDateFormat tgl = new SimpleDateFormat("EEEE, dd MMMM yyyy");
+            //String newtanggal = tgl.format(tanggal);
      
             String blob = Base64.encodeBase64String(file.getBytes());
-                    
-            return "<h1>"+text+"</h1>"+"<hr>"+newtanggal+"<br><img width=400 src='data:image/jpeg;base64,"+blob+"'/><br>";
+            String gambar = "data:image/jpeg;base64,".concat(blob);
+        
+        SimpleDateFormat tgl = new SimpleDateFormat("EEEE, dd MMMM yyyy");
+        String newTanggal = tgl.format(tanggal);
+       
+        model.addAttribute("name", text);
+        model.addAttribute("tgl", newTanggal);
+        model.addAttribute("gambar", gambar);
+        
+            return "hasil";
     }
 }
