@@ -9,6 +9,25 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            h1 {
+                text-align: center;
+                color: #990066;
+            }
+            h2{
+                text-align: center;
+            }
+            form {text-align: center;}
+            .footer {
+                position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #990066;
+            color: white;
+            text-align: center;
+            }
+        </style> 
     </head>
     <body>
         <div>ID CARD</div>
@@ -23,11 +42,14 @@ and open the template in the editor.
             </thead>
             <tbody>
                 <tr>
-                     <td th:text="${name}"></td>
+                     <td th:text="${nama}"></td>
                      <td th:text="${tgl}"></td>
                      <td> <img th:src="${gambar}"> </td>
                 </tr>
             </tbody>
         </table>
+        <div class="footer">
+            <p>Azhar Salwa Salsabila (20200140105)</p>
+        </div>
     </body>
 </html>
